@@ -39,7 +39,7 @@
       --space-13: 6.5rem; /* 104px */
       --space-14: 7rem;   /* 112px */
       --space-15: 7.5rem; /* 120px */
-
+    }
     body.light-mode {
       --background: #F8FAFC;
       --surface: rgba(255, 255, 255, 0.9);
@@ -1201,7 +1201,7 @@
       const savedTheme = localStorage.getItem('portfolioTheme');
       if (savedTheme === 'light') {
         body.classList.add('light-mode');
-        themeToggle.querySelector('span').textContent = '☀️';
+        themeToggle.querySelector('span').textContent = '🌞';
       }
       revealOnScroll();
       typeLoop();
