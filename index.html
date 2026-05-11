@@ -485,92 +485,385 @@
       border-color: rgba(100, 255, 218, 0.18);
     }
 
-    .skills-grid {
+    .skills-panel {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: 1.2fr 0.9fr;
+      gap: 2rem;
+      align-items: start;
     }
 
-    .skill-card {
+    .infographic-block {
+      display: grid;
+      gap: 1.5rem;
       position: relative;
-      padding: 1.75rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .stat-card {
+      position: relative;
+      padding: 1.5rem;
       border-radius: 28px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(18px);
       box-shadow: var(--shadow);
       overflow: hidden;
       transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
     }
 
-    .skill-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(100, 255, 218, 0.2);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    .stat-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(100, 255, 218, 0.18);
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.28);
     }
 
-    .skill-card::before {
+    .stat-card::before {
       content: '';
       position: absolute;
-      inset: 0;
-      background: linear-gradient(150deg, rgba(100, 255, 218, 0.06), transparent 40%);
+      top: -20px;
+      right: -30px;
+      width: 120px;
+      height: 120px;
+      background: rgba(100, 255, 218, 0.12);
+      border-radius: 50%;
+      filter: blur(50px);
       pointer-events: none;
     }
 
-    .skill-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1.2rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .skill-title {
+    .stat-value {
       margin: 0;
-      font-size: 1.1rem;
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
       color: var(--text-primary);
+      line-height: 1;
+    }
+
+    .stat-label {
+      margin: 0.65rem 0 0;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
       font-weight: 700;
     }
 
-    .skill-label {
-      color: var(--accent);
-      font-weight: 700;
-      font-size: 0.9rem;
+    .radial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
     }
 
-    .skill-icon {
-      width: 58px;
-      height: 58px;
-      border-radius: 20px;
-      background: linear-gradient(135deg, rgba(100, 255, 218, 0.2), rgba(59, 130, 246, 0.18));
+    .skill-ring-card {
+      position: relative;
       display: grid;
       place-items: center;
-      font-size: 1.4rem;
-      color: var(--accent);
-      flex-shrink: 0;
-      position: relative;
-      z-index: 1;
-    }
-
-    .skill-progress {
-      position: relative;
-      height: 12px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.08);
+      gap: 1rem;
+      padding: 1.75rem;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
       overflow: hidden;
-      margin-top: 1rem;
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+      min-height: 250px;
+    }
+
+    .skill-ring-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(100, 255, 218, 0.18);
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.28);
+    }
+
+    .skill-ring-card::after {
+      content: '';
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      width: 130px;
+      height: 130px;
+      background: radial-gradient(circle, rgba(100, 255, 218, 0.08), transparent 55%);
+      filter: blur(30px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .skill-ring-card > * {
+      position: relative;
       z-index: 1;
     }
 
-    .skill-progress span {
-      display: block;
+    .chart-ring {
+      width: 134px;
+      height: 134px;
+    }
+
+    .chart-ring svg {
+      width: 100%;
       height: 100%;
-      width: 0;
+      transform: rotate(-90deg);
+    }
+
+    .chart-ring circle {
+      fill: none;
+      stroke-width: 12;
+      stroke-linecap: round;
+    }
+
+    .ring-bg {
+      stroke: rgba(255, 255, 255, 0.08);
+    }
+
+    .ring-fill {
+      stroke: var(--accent);
+      stroke-dasharray: 440;
+      stroke-dashoffset: 440;
+      transition: stroke-dashoffset 1.6s ease 0.2s, stroke 0.4s ease;
+      filter: drop-shadow(0 0 12px rgba(100, 255, 218, 0.45));
+    }
+
+    .skill-ring-card.visible .ring-fill {
+      stroke-dashoffset: calc(440 - (440 * var(--percentage) / 100));
+    }
+
+    .chart-value {
+      margin: 0;
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.03em;
+    }
+
+    .chart-title {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      text-align: center;
+    }
+
+    .chart-subtitle {
+      margin: 0;
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+      text-align: center;
+    }
+
+    .timeline-panel {
+      position: relative;
+      padding: 2rem 2rem 2rem 3rem;
+      border-radius: 32px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .timeline-panel::before {
+      content: '';
+      position: absolute;
+      top: 1rem;
+      bottom: 1rem;
+      left: 2.2rem;
+      width: 2px;
+      background: linear-gradient(180deg, rgba(100, 255, 218, 1), rgba(59, 130, 246, 0.2));
+      opacity: 0.7;
+    }
+
+    .timeline-badge {
+      position: absolute;
+      top: 1rem;
+      left: 0.6rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(100, 255, 218, 0.15);
+      border: 1px solid rgba(100, 255, 218, 0.35);
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      font-weight: 700;
+      box-shadow: 0 0 20px rgba(100, 255, 218, 0.18);
+    }
+
+    .timeline-list {
+      display: grid;
+      gap: 1.4rem;
+      position: relative;
+      margin-top: 2.5rem;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 1.5rem 1.5rem 1.5rem 2.25rem;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .timeline-item:hover {
+      transform: translateY(-4px);
+      border-color: rgba(100, 255, 218, 0.18);
+      box-shadow: 0 18px 40px rgba(100, 255, 218, 0.12);
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -28px;
+      top: 1.45rem;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 3px solid rgba(15, 17, 21, 1);
+      box-shadow: 0 0 18px rgba(100, 255, 218, 0.3);
+    }
+
+    .timeline-date {
+      margin: 0 0 0.5rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .timeline-title {
+      margin: 0;
+      color: var(--text-primary);
+      font-size: 1.2rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .timeline-copy {
+      margin: 0.75rem 0 0;
+      color: var(--text-secondary);
+      line-height: 1.85;
+      font-size: 0.95rem;
+    }
+
+    .timeline-highlight {
+      position: absolute;
+      top: -18px;
+      right: -18px;
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: rgba(100, 255, 218, 0.08);
+      filter: blur(40px);
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .experience-card {
+      position: relative;
+      padding: 1.75rem;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .experience-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(100, 255, 218, 0.18);
+      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.3);
+    }
+
+    .experience-card::after {
+      content: '';
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 72px;
+      height: 72px;
+      background: rgba(100, 255, 218, 0.08);
+      border-radius: 50%;
+      filter: blur(24px);
+    }
+
+    .experience-meta {
+      display: grid;
+      gap: 0.3rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .experience-year {
+      margin: 0;
+      color: var(--accent);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .experience-role {
+      margin: 0;
+      color: var(--text-primary);
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .experience-note {
+      margin: 0.8rem 0 0;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      font-size: 0.95rem;
+    }
+
+    .experience-flag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 0.9rem;
       border-radius: 999px;
-      background: var(--gradient);
-      box-shadow: 0 0 20px rgba(100, 255, 218, 0.35);
-      transition: width 1.6s ease;
+      background: rgba(100, 255, 218, 0.1);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      border: 1px solid rgba(100, 255, 218, 0.16);
+      position: relative;
+      z-index: 1;
+    }
+
+    .skills-panel::after {
+      content: '';
+      position: absolute;
+      top: 24%;
+      right: -40px;
+      width: 220px;
+      height: 220px;
+      background: rgba(100, 255, 218, 0.08);
+      border-radius: 50%;
+      filter: blur(60px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .skills-panel > * {
+      position: relative;
+      z-index: 1;
     }
 
     .project-grid {
@@ -767,7 +1060,7 @@
       .about-grid,
       .contact-grid,
       .project-grid,
-      .skills-grid {
+      .skills-panel {
         grid-template-columns: 1fr;
       }
 
@@ -800,8 +1093,14 @@
         font-size: 3rem;
       }
 
-      .skills-grid,
+      .skills-panel,
       .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .radial-grid,
+      .experience-grid,
+      .stats-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -913,42 +1212,144 @@
       <section class="section" id="skills">
         <div class="section-heading reveal">
           <span>Skills</span>
-          <h2>Modern craft, technical depth, and premium motion.</h2>
-          <p>Design systems, creative direction, and polished interfaces with a strong luxury mood and unmistakable clarity.</p>
+          <h2>Elevated creative skill and experience in a cinematic visual system.</h2>
+          <p>A modern agency-level skills showcase built with glassmorphism, glowing radial charts, premium statistics, and an animated experience timeline.</p>
         </div>
-        <div class="skills-grid">
-          <article class="skill-card reveal" style="--progress: 95%;">
-            <div class="skill-top">
-              <div>
-                <h3 class="skill-title">Adobe Photoshop</h3>
-                <div class="skill-label">Visual Retouching</div>
-              </div>
-              <div class="skill-icon">🖌️</div>
-            </div>
-            <div class="skill-progress"><span></span></div>
-          </article>
 
-          <article class="skill-card reveal" style="--progress: 92%;">
-            <div class="skill-top">
-              <div>
-                <h3 class="skill-title">Adobe Illustrator</h3>
-                <div class="skill-label">Brand Systems</div>
-              </div>
-              <div class="skill-icon">✍️</div>
+        <div class="skills-panel">
+          <div class="infographic-block">
+            <div class="stats-grid">
+              <article class="stat-card reveal">
+                <p class="stat-value">50+</p>
+                <p class="stat-label">Projects Delivered</p>
+              </article>
+              <article class="stat-card reveal">
+                <p class="stat-value">20+</p>
+                <p class="stat-label">Clients Served</p>
+              </article>
+              <article class="stat-card reveal">
+                <p class="stat-value">3</p>
+                <p class="stat-label">Years Experience</p>
+              </article>
+              <article class="stat-card reveal">
+                <p class="stat-value">95%</p>
+                <p class="stat-label">Client Satisfaction</p>
+              </article>
             </div>
-            <div class="skill-progress"><span></span></div>
-          </article>
 
-          <article class="skill-card reveal" style="--progress: 90%;">
-            <div class="skill-top">
-              <div>
-                <h3 class="skill-title">Figma</h3>
-                <div class="skill-label">UI Visuals</div>
-              </div>
-              <div class="skill-icon">📱</div>
+            <div class="radial-grid">
+              <article class="skill-ring-card reveal" style="--percentage: 96;">
+                <div class="chart-ring">
+                  <svg viewBox="0 0 140 140">
+                    <circle class="ring-bg" cx="70" cy="70" r="66" />
+                    <circle class="ring-fill" cx="70" cy="70" r="66" />
+                  </svg>
+                  <p class="chart-value">96%</p>
+                </div>
+                <p class="chart-title">Adobe Photoshop</p>
+                <p class="chart-subtitle">Photo refinement & mood craft</p>
+              </article>
+
+              <article class="skill-ring-card reveal" style="--percentage: 92;">
+                <div class="chart-ring">
+                  <svg viewBox="0 0 140 140">
+                    <circle class="ring-bg" cx="70" cy="70" r="66" />
+                    <circle class="ring-fill" cx="70" cy="70" r="66" />
+                  </svg>
+                  <p class="chart-value">92%</p>
+                </div>
+                <p class="chart-title">Adobe Illustrator</p>
+                <p class="chart-subtitle">Vector systems & premium identity</p>
+              </article>
+
+              <article class="skill-ring-card reveal" style="--percentage: 91;">
+                <div class="chart-ring">
+                  <svg viewBox="0 0 140 140">
+                    <circle class="ring-bg" cx="70" cy="70" r="66" />
+                    <circle class="ring-fill" cx="70" cy="70" r="66" />
+                  </svg>
+                  <p class="chart-value">91%</p>
+                </div>
+                <p class="chart-title">Branding</p>
+                <p class="chart-subtitle">Identity systems with luxury tone</p>
+              </article>
+
+              <article class="skill-ring-card reveal" style="--percentage: 89;">
+                <div class="chart-ring">
+                  <svg viewBox="0 0 140 140">
+                    <circle class="ring-bg" cx="70" cy="70" r="66" />
+                    <circle class="ring-fill" cx="70" cy="70" r="66" />
+                  </svg>
+                  <p class="chart-value">89%</p>
+                </div>
+                <p class="chart-title">UI Visual Design</p>
+                <p class="chart-subtitle">Interface craft & motion-ready UI</p>
+              </article>
+
+              <article class="skill-ring-card reveal" style="--percentage: 88;">
+                <div class="chart-ring">
+                  <svg viewBox="0 0 140 140">
+                    <circle class="ring-bg" cx="70" cy="70" r="66" />
+                    <circle class="ring-fill" cx="70" cy="70" r="66" />
+                  </svg>
+                  <p class="chart-value">88%</p>
+                </div>
+                <p class="chart-title">Poster Design</p>
+                <p class="chart-subtitle">Layered editorial visuals</p>
+              </article>
+
+              <article class="skill-ring-card reveal" style="--percentage: 90;">
+                <div class="chart-ring">
+                  <svg viewBox="0 0 140 140">
+                    <circle class="ring-bg" cx="70" cy="70" r="66" />
+                    <circle class="ring-fill" cx="70" cy="70" r="66" />
+                  </svg>
+                  <p class="chart-value">90%</p>
+                </div>
+                <p class="chart-title">Packaging Design</p>
+                <p class="chart-subtitle">Premium product composition</p>
+              </article>
             </div>
-            <div class="skill-progress"><span></span></div>
-          </article>
+          </div>
+
+          <div class="timeline-panel reveal">
+            <div class="timeline-badge">2023+</div>
+            <div class="timeline-highlight"></div>
+            <div class="timeline-list">
+              <article class="timeline-item">
+                <p class="timeline-date">2023</p>
+                <h4 class="timeline-title">Freelance Graphic Designer</h4>
+                <p class="timeline-copy">Led brand, poster, and visual campaigns for local and international clients with premium creative direction.</p>
+              </article>
+              <article class="timeline-item">
+                <p class="timeline-date">2024</p>
+                <h4 class="timeline-title">Brand Identity Projects</h4>
+                <p class="timeline-copy">Developed refined identity systems, visual language, and packaging work across strategic brand narratives.</p>
+              </article>
+              <article class="timeline-item">
+                <p class="timeline-date">2025</p>
+                <h4 class="timeline-title">UI Visual Design</h4>
+                <p class="timeline-copy">Crafted futuristic UI visuals and motion-led interface concepts for a high-end wellness app.</p>
+              </article>
+            </div>
+
+            <div class="experience-grid">
+              <article class="experience-card">
+                <span class="experience-flag">Fast delivery</span>
+                <div class="experience-meta">
+                  <p class="experience-year">Quick turnarounds</p>
+                  <h4 class="experience-role">Responsive creative delivery for agency-level briefs.</h4>
+                </div>
+              </article>
+              <article class="experience-card">
+                <span class="experience-flag">Premium quality</span>
+                <div class="experience-meta">
+                  <p class="experience-year">Luxury finish</p>
+                  <h4 class="experience-role">Visual systems built for memorable brand impact.</h4>
+                </div>
+              </article>
+            </div>
+          </div>
         </div>
       </section>
 
