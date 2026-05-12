@@ -1,7 +1,11 @@
-I
-- Xử dụng công cụ AI chat gpt
-II
-- Xử dụng câu lệnh để viết prompt
+#I
+
+# - Xử dụng công cụ AI chat gpt
+
+#II
+
+#- Xử dụng câu lệnh để viết prompt
+
   . Đây câu lệnh : bạn là chuyên gia về UX/UI. Tạo cho tôi một portfolio đơn giản bao gồm html + csss.
 Giao diện dark blue. Có nút thay đổi theme ở đầu trang. Thông tin cá nhân: Đoàn Lê Đăng Khoa, ngành nghề:
 Graphic designer. Công trình đã công bố (mày hãy tự bịa ra và cho vào) Hãy tạo cho tôi một bộ prompt để agent
@@ -209,10 +213,15 @@ The website must look like a REAL professional designer portfolio ready to:
 - Apply for jobs
 
 It should feel like a high-end creative agency website, not a student project.
-III
-- Và đưa lên app  github.com để cho nó làm  
-IV
-- Và sau đó kiểm tra và sửa và thêm những gì thiếu qua prompt:
+
+#III
+
+#- Và đưa lên app  github.com để cho nó làm
+
+#IV
+
+#- Và sau đó kiểm tra và sửa và thêm những gì thiếu qua prompt:
+
  . Thiếu “layout system”
    ## LAYOUT SYSTEM (IMPORTANT)
 
@@ -291,10 +300,14 @@ Timeline style:
 
 Skills section phải là điểm nhấn thị giác của website, giống portfolio designer chuyên nghiệp trên Behance hoặc Awwwards.
 Không được làm kiểu bảng kỹ năng đơn giản.
-V 
-và chèn thêm ảnh  thêm thông tin cá nhân 
-VI 
-- Ý tưởng tổng thể:
+
+#V
+
+#và chèn thêm ảnh  thêm thông tin cá nhân
+
+#VI
+
+#- Ý tưởng tổng thể:
   Portfolio được thiết kế theo phong cách Modern Minimal + Dark Aesthetic, lấy cảm hứng từ các nền tảng sáng tạo như Behance
  và Awwwards
 .
@@ -321,8 +334,11 @@ chuyên nghiệp
 hiện đại
 artistic
 mang đậm cá tính thương hiệu cá nhân của designer.
-VI 
-- Thay đổi trình bày bằng biểu đồ, sơ đồ, thẻ thông tin hoặc hình thức trực quan khác
+
+#VI 
+
+#- Thay đổi trình bày bằng biểu đồ, sơ đồ, thẻ thông tin hoặc hình thức trực quan khác
+
    Đây là prompt: Design the Skills / Experience section in a PREMIUM VISUAL way instead of simple progress bars.
 
 STYLE:
@@ -469,7 +485,9 @@ The Skills / Experience section should become:
 
 OUTPUT:
 Generate modern HTML + CSS + JS for this section only.
-VII
+
+#VII
+
 - Thay đổi khoảng cách của cark trên prompt VI
   Design the Skills / Experience section in a PREMIUM VISUAL way instead of simple progress bars.
 
