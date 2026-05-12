@@ -1112,6 +1112,505 @@
       }
     }
 
+    /* ============================================
+       ENHANCED SKILLS SECTION STYLES
+       ============================================ */
+
+    .skills-container {
+      display: grid;
+      gap: 4rem;
+    }
+
+    /* TECHNICAL SKILLS SUBSECTION */
+    .technical-skills {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .skill-bars-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .skill-bar-card {
+      position: relative;
+      padding: 1.5rem;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(100, 255, 218, 0.1);
+      backdrop-filter: blur(16px);
+      transition: all var(--transition);
+      overflow: hidden;
+    }
+
+    .skill-bar-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.12), transparent);
+      transition: left 0.6s ease;
+      pointer-events: none;
+    }
+
+    .skill-bar-card:hover {
+      border-color: rgba(100, 255, 218, 0.2);
+      box-shadow: 0 12px 40px rgba(100, 255, 218, 0.08);
+      transform: translateY(-3px);
+    }
+
+    .skill-bar-card:hover::before {
+      left: 100%;
+    }
+
+    .skill-bar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .skill-bar-name {
+      margin: 0;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: 0.05em;
+    }
+
+    .skill-bar-percent {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -0.02em;
+    }
+
+    .progress-bar-wrapper {
+      position: relative;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      overflow: hidden;
+      border: 1px solid rgba(100, 255, 218, 0.08);
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), rgba(100, 255, 218, 0.7));
+      width: 0%;
+      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+      box-shadow: 0 0 16px rgba(100, 255, 218, 0.4);
+      position: relative;
+    }
+
+    .progress-bar-fill::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40px;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3));
+    }
+
+    .skill-bar-card.visible .progress-bar-fill {
+      width: var(--skill-value);
+    }
+
+    /* CREATIVE EXPERTISE SUBSECTION */
+    .creative-expertise {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .expertise-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .expertise-card {
+      position: relative;
+      padding: 2rem;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(100, 255, 218, 0.12);
+      backdrop-filter: blur(20px);
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      transition: all var(--transition);
+      overflow: hidden;
+    }
+
+    .expertise-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(100, 255, 218, 0.08), transparent);
+      opacity: 0;
+      transition: opacity var(--transition);
+      pointer-events: none;
+    }
+
+    .expertise-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(100, 255, 218, 0.25);
+      box-shadow: 0 20px 60px rgba(100, 255, 218, 0.12);
+    }
+
+    .expertise-card:hover::before {
+      opacity: 1;
+    }
+
+    .expertise-icon {
+      position: relative;
+      z-index: 1;
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(100, 255, 218, 0.2), rgba(100, 255, 218, 0.08));
+      border: 1px solid rgba(100, 255, 218, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 8px 24px rgba(100, 255, 218, 0.1);
+    }
+
+    .expertise-title {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: 0.02em;
+    }
+
+    .expertise-description {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* SOFTWARE STACK SUBSECTION */
+    .software-stack {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .software-badges-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .software-badge {
+      position: relative;
+      padding: 1.5rem;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(100, 255, 218, 0.12);
+      backdrop-filter: blur(18px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all var(--transition);
+      overflow: hidden;
+      group: 'software-badge';
+    }
+
+    .software-badge::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(100, 255, 218, 0.2), transparent);
+      opacity: 0;
+      transition: opacity var(--transition);
+      pointer-events: none;
+    }
+
+    .software-badge:hover {
+      transform: translateY(-8px) scale(1.05);
+      border-color: rgba(100, 255, 218, 0.3);
+      box-shadow: 0 20px 50px rgba(100, 255, 218, 0.15);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .software-badge:hover::before {
+      opacity: 1;
+    }
+
+    .software-logo {
+      position: relative;
+      z-index: 1;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+    }
+
+    .software-name {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: 0.05em;
+    }
+
+    .software-tooltip {
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-12px);
+      padding: 0.6rem 0.95rem;
+      border-radius: 12px;
+      background: rgba(15, 17, 21, 0.96);
+      border: 1px solid rgba(100, 255, 218, 0.2);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      white-space: nowrap;
+      letter-spacing: 0.05em;
+      opacity: 0;
+      pointer-events: none;
+      transition: all var(--transition);
+      z-index: 10;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .software-tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 8px;
+      height: 8px;
+      background: rgba(15, 17, 21, 0.96);
+      border-right: 1px solid rgba(100, 255, 218, 0.2);
+      border-bottom: 1px solid rgba(100, 255, 218, 0.2);
+      border-radius: 0 0 4px 0;
+    }
+
+    .software-badge:hover .software-tooltip {
+      opacity: 1;
+      transform: translateX(-50%) translateY(-14px);
+    }
+
+    /* ENHANCED EXPERIENCE SECTION */
+    .experience-section {
+      display: grid;
+      gap: 2rem;
+    }
+
+    .timeline-container {
+      position: relative;
+      padding: 0;
+    }
+
+    .timeline-vertical {
+      display: grid;
+      gap: 1.8rem;
+      position: relative;
+      padding-left: 3.5rem;
+    }
+
+    .timeline-vertical::before {
+      content: '';
+      position: absolute;
+      left: 0.6rem;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent), rgba(100, 255, 218, 0.2));
+      animation: lineGlow 2.5s ease-in-out infinite;
+    }
+
+    @keyframes lineGlow {
+      0%, 100% { box-shadow: 0 0 20px rgba(100, 255, 218, 0.3); }
+      50% { box-shadow: 0 0 30px rgba(100, 255, 218, 0.5); }
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -24px;
+      top: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), rgba(100, 255, 218, 0.7));
+      border: 3px solid rgba(15, 17, 21, 1);
+      box-shadow: 0 0 24px rgba(100, 255, 218, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #07101a;
+      font-weight: 700;
+      font-size: 0.75rem;
+    }
+
+    .experience-item {
+      position: relative;
+      padding: 1.8rem;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(100, 255, 218, 0.12);
+      backdrop-filter: blur(20px);
+      transition: all var(--transition);
+      overflow: hidden;
+    }
+
+    .experience-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(100, 255, 218, 0.08), transparent);
+      opacity: 0;
+      transition: opacity var(--transition);
+      pointer-events: none;
+    }
+
+    .experience-item:hover {
+      transform: translateX(8px);
+      border-color: rgba(100, 255, 218, 0.25);
+      box-shadow: 0 20px 60px rgba(100, 255, 218, 0.12);
+    }
+
+    .experience-item:hover::before {
+      opacity: 1;
+    }
+
+    .experience-header {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .experience-period {
+      margin: 0;
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .experience-company {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .experience-position {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 0.8rem;
+      color: var(--text-primary);
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+
+    .experience-description {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 1.2rem;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+
+    .achievement-tags {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .achievement-tag {
+      padding: 0.55rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(100, 255, 218, 0.08);
+      border: 1px solid rgba(100, 255, 218, 0.18);
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: all var(--transition);
+    }
+
+    .achievement-tag:hover {
+      background: rgba(100, 255, 218, 0.15);
+      border-color: rgba(100, 255, 218, 0.3);
+    }
+
+    /* RESPONSIVE ADJUSTMENTS */
+    @media (max-width: 1080px) {
+      .expertise-cards-grid,
+      .software-badges-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .skill-bars-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .expertise-cards-grid,
+      .software-badges-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skill-bars-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-vertical {
+        padding-left: 2.5rem;
+      }
+
+      .timeline-dot {
+        left: -18px;
+        width: 28px;
+        height: 28px;
+        font-size: 0.7rem;
+      }
+
+      .timeline-vertical::before {
+        left: 0.5rem;
+      }
+    }
+
     @media (max-width: 520px) {
       .hero {
         padding-top: 7rem;
@@ -1134,6 +1633,21 @@
       }
 
       .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .expertise-cards-grid,
+      .software-badges-grid,
+      .skill-bars-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .software-badges-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .education-grid,
+      .achievement-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -1218,32 +1732,87 @@
 
       <section class="section" id="skills">
         <div class="section-heading reveal">
-          <span>Skills</span>
-          <h2>Elevated creative skill and experience in a cinematic visual system.</h2>
-          <p>A modern agency-level skills showcase built with glassmorphism, glowing radial charts, premium statistics, and an animated experience timeline.</p>
+          <span>Skills & Experience</span>
+          <h2>Expertise crafted through premium visual design and creative expression.</h2>
+          <p>Technical proficiency combined with creative vision across branding, poster design, and UI visual systems—backed by proven results and modern tools.</p>
         </div>
 
-        <div class="skills-panel">
-          <div class="infographic-block">
-            <div class="stats-grid">
-              <article class="stat-card reveal">
-                <p class="stat-value">50+</p>
-                <p class="stat-label">Projects Delivered</p>
+        <div class="skills-container">
+          
+          <!-- TECHNICAL SKILLS SECTION -->
+          <div class="technical-skills">
+            <div class="reveal">
+              <h3 style="margin: 0 0 1.5rem; font-size: 1.5rem; color: var(--text-primary); letter-spacing: 0.05em;">Technical Skills</h3>
+              <p style="margin: 0; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; max-width: 680px;">Expertise across industry-standard tools with deep technical knowledge and creative execution.</p>
+            </div>
+            <div class="skill-bars-grid">
+              <article class="skill-bar-card reveal" style="--skill-value: 96%;">
+                <div class="skill-bar-header">
+                  <p class="skill-bar-name">Adobe Photoshop</p>
+                  <p class="skill-bar-percent">96%</p>
+                </div>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar-fill"></div>
+                </div>
               </article>
-              <article class="stat-card reveal">
-                <p class="stat-value">20+</p>
-                <p class="stat-label">Clients Served</p>
+
+              <article class="skill-bar-card reveal" style="--skill-value: 92%;">
+                <div class="skill-bar-header">
+                  <p class="skill-bar-name">Adobe Illustrator</p>
+                  <p class="skill-bar-percent">92%</p>
+                </div>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar-fill"></div>
+                </div>
               </article>
-              <article class="stat-card reveal">
-                <p class="stat-value">3</p>
-                <p class="stat-label">Years Experience</p>
+
+              <article class="skill-bar-card reveal" style="--skill-value: 91%;">
+                <div class="skill-bar-header">
+                  <p class="skill-bar-name">Figma</p>
+                  <p class="skill-bar-percent">91%</p>
+                </div>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar-fill"></div>
+                </div>
               </article>
-              <article class="stat-card reveal">
-                <p class="stat-value">95%</p>
-                <p class="stat-label">Client Satisfaction</p>
+
+              <article class="skill-bar-card reveal" style="--skill-value: 88%;">
+                <div class="skill-bar-header">
+                  <p class="skill-bar-name">After Effects</p>
+                  <p class="skill-bar-percent">88%</p>
+                </div>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar-fill"></div>
+                </div>
+              </article>
+
+              <article class="skill-bar-card reveal" style="--skill-value: 94%;">
+                <div class="skill-bar-header">
+                  <p class="skill-bar-name">Branding</p>
+                  <p class="skill-bar-percent">94%</p>
+                </div>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar-fill"></div>
+                </div>
+              </article>
+
+              <article class="skill-bar-card reveal" style="--skill-value: 90%;">
+                <div class="skill-bar-header">
+                  <p class="skill-bar-name">UI/UX Design</p>
+                  <p class="skill-bar-percent">90%</p>
+                </div>
+                <div class="progress-bar-wrapper">
+                  <div class="progress-bar-fill"></div>
+                </div>
               </article>
             </div>
+          </div>
 
+          <!-- CIRCULAR PROGRESS CHARTS -->
+          <div style="width: 100%;">
+            <div class="reveal">
+              <h3 style="margin: 0 0 1.5rem; font-size: 1.5rem; color: var(--text-primary); letter-spacing: 0.05em;">Core Expertise</h3>
+            </div>
             <div class="radial-grid">
               <article class="skill-ring-card reveal" style="--percentage: 96;">
                 <div class="chart-ring">
@@ -1253,7 +1822,7 @@
                   </svg>
                   <p class="chart-value">96%</p>
                 </div>
-                <p class="skill-card-title">Adobe Photoshop</p>
+                <p class="skill-card-title">Photoshop</p>
                 <p class="skill-description">Photo refinement & mood craft</p>
               </article>
 
@@ -1265,7 +1834,7 @@
                   </svg>
                   <p class="chart-value">92%</p>
                 </div>
-                <p class="skill-card-title">Adobe Illustrator</p>
+                <p class="skill-card-title">Illustrator</p>
                 <p class="skill-description">Vector systems & premium identity</p>
               </article>
 
@@ -1289,7 +1858,7 @@
                   </svg>
                   <p class="chart-value">89%</p>
                 </div>
-                <p class="skill-card-title">UI Visual Design</p>
+                <p class="skill-card-title">UI Design</p>
                 <p class="skill-description">Interface craft & motion-ready UI</p>
               </article>
 
@@ -1313,50 +1882,194 @@
                   </svg>
                   <p class="chart-value">90%</p>
                 </div>
-                <p class="skill-card-title">Packaging Design</p>
+                <p class="skill-card-title">Packaging</p>
                 <p class="skill-description">Premium product composition</p>
               </article>
             </div>
           </div>
 
-          <div class="timeline-panel reveal">
-            <div class="timeline-badge">2023+</div>
-            <div class="timeline-highlight"></div>
-            <div class="timeline-list">
-              <article class="timeline-item">
-                <p class="timeline-date">2023</p>
-                <h4 class="timeline-title">Freelance Graphic Designer</h4>
-                <p class="timeline-copy">Led brand, poster, and visual campaigns for local and international clients with premium creative direction.</p>
-              </article>
-              <article class="timeline-item">
-                <p class="timeline-date">2024</p>
-                <h4 class="timeline-title">Brand Identity Projects</h4>
-                <p class="timeline-copy">Developed refined identity systems, visual language, and packaging work across strategic brand narratives.</p>
-              </article>
-              <article class="timeline-item">
-                <p class="timeline-date">2025</p>
-                <h4 class="timeline-title">UI Visual Design</h4>
-                <p class="timeline-copy">Crafted futuristic UI visuals and motion-led interface concepts for a high-end wellness app.</p>
-              </article>
+          <!-- CREATIVE EXPERTISE SECTION -->
+          <div class="creative-expertise">
+            <div class="reveal">
+              <h3 style="margin: 0 0 1.5rem; font-size: 1.5rem; color: var(--text-primary); letter-spacing: 0.05em;">Creative Expertise</h3>
+              <p style="margin: 0; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; max-width: 680px;">Specialized expertise in visual disciplines that define modern design standards.</p>
             </div>
-
-            <div class="experience-grid">
-              <article class="experience-card">
-                <span class="experience-flag">Fast delivery</span>
-                <div class="experience-meta">
-                  <p class="experience-year">Quick turnarounds</p>
-                  <h4 class="experience-role">Responsive creative delivery for agency-level briefs.</h4>
-                </div>
+            <div class="expertise-cards-grid">
+              <article class="expertise-card reveal">
+                <div class="expertise-icon">🎨</div>
+                <h4 class="expertise-title">Brand Identity</h4>
+                <p class="expertise-description">Logo design, color systems, and complete brand guidelines for cohesive visual presence.</p>
               </article>
-              <article class="experience-card">
-                <span class="experience-flag">Premium quality</span>
-                <div class="experience-meta">
-                  <p class="experience-year">Luxury finish</p>
-                  <h4 class="experience-role">Visual systems built for memorable brand impact.</h4>
-                </div>
+
+              <article class="expertise-card reveal">
+                <div class="expertise-icon">📰</div>
+                <h4 class="expertise-title">Poster Design</h4>
+                <p class="expertise-description">Editorial layouts, campaign visuals, and event graphics with cinematic impact.</p>
+              </article>
+
+              <article class="expertise-card reveal">
+                <div class="expertise-icon">📱</div>
+                <h4 class="expertise-title">Social Media Visual</h4>
+                <p class="expertise-description">Feed designs, stories, and social content optimized for engagement and brand story.</p>
+              </article>
+
+              <article class="expertise-card reveal">
+                <div class="expertise-icon">🎯</div>
+                <h4 class="expertise-title">UI/Visual Design</h4>
+                <p class="expertise-description">Interface systems, interaction design, and motion-ready visual components.</p>
+              </article>
+
+              <article class="expertise-card reveal">
+                <div class="expertise-icon">✨</div>
+                <h4 class="expertise-title">Motion Graphic</h4>
+                <p class="expertise-description">Animated concepts, transitions, and dynamic visual storytelling.</p>
+              </article>
+
+              <article class="expertise-card reveal">
+                <div class="expertise-icon">✍️</div>
+                <h4 class="expertise-title">Typography</h4>
+                <p class="expertise-description">Type pairing, custom letterforms, and elegant typographic hierarchies.</p>
               </article>
             </div>
           </div>
+
+          <!-- SOFTWARE STACK SECTION -->
+          <div class="software-stack">
+            <div class="reveal">
+              <h3 style="margin: 0 0 1.5rem; font-size: 1.5rem; color: var(--text-primary); letter-spacing: 0.05em;">Software Stack</h3>
+              <p style="margin: 0; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; max-width: 680px;">Professional tools for every aspect of visual creation, from concept to final delivery.</p>
+            </div>
+            <div class="software-badges-grid">
+              <div class="software-badge reveal">
+                <div class="software-logo">🎨</div>
+                <p class="software-name">Photoshop</p>
+                <div class="software-tooltip">Photo & Digital Art</div>
+              </div>
+
+              <div class="software-badge reveal">
+                <div class="software-logo">🎭</div>
+                <p class="software-name">Illustrator</p>
+                <div class="software-tooltip">Vector Graphics</div>
+              </div>
+
+              <div class="software-badge reveal">
+                <div class="software-logo">🎯</div>
+                <p class="software-name">Figma</p>
+                <div class="software-tooltip">UI/UX Design</div>
+              </div>
+
+              <div class="software-badge reveal">
+                <div class="software-logo">🎬</div>
+                <p class="software-name">After Effects</p>
+                <div class="software-tooltip">Motion Graphics</div>
+              </div>
+
+              <div class="software-badge reveal">
+                <div class="software-logo">🌀</div>
+                <p class="software-name">Blender</p>
+                <div class="software-tooltip">3D Modeling</div>
+              </div>
+
+              <div class="software-badge reveal">
+                <div class="software-logo">📷</div>
+                <p class="software-name">Lightroom</p>
+                <div class="software-tooltip">Photo Editing</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STATS GRID -->
+          <div style="width: 100%;">
+            <div class="reveal">
+              <h3 style="margin: 0 0 1.5rem; font-size: 1.5rem; color: var(--text-primary); letter-spacing: 0.05em;">Track Record</h3>
+            </div>
+            <div class="stats-grid">
+              <article class="stat-card reveal">
+                <p class="stat-value">50+</p>
+                <p class="stat-label">Projects Delivered</p>
+              </article>
+              <article class="stat-card reveal">
+                <p class="stat-value">20+</p>
+                <p class="stat-label">Clients Served</p>
+              </article>
+              <article class="stat-card reveal">
+                <p class="stat-value">3</p>
+                <p class="stat-label">Years Experience</p>
+              </article>
+              <article class="stat-card reveal">
+                <p class="stat-value">95%</p>
+                <p class="stat-label">Client Satisfaction</p>
+              </article>
+            </div>
+          </div>
+
+          <!-- EXPERIENCE TIMELINE SECTION -->
+          <div class="experience-section">
+            <div class="reveal">
+              <h3 style="margin: 0 0 1.5rem; font-size: 1.5rem; color: var(--text-primary); letter-spacing: 0.05em;">Professional Journey</h3>
+              <p style="margin: 0; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; max-width: 680px;">Timeline of achievements, growth, and creative milestones.</p>
+            </div>
+            <div class="timeline-container">
+              <div class="timeline-vertical">
+                <article class="experience-item reveal">
+                  <div class="timeline-dot">•</div>
+                  <div class="experience-header">
+                    <div>
+                      <p class="experience-period">2024 — Present</p>
+                      <p class="experience-company">Freelance Graphic Designer</p>
+                    </div>
+                  </div>
+                  <h4 class="experience-position">Freelance Brand & Visual Designer</h4>
+                  <p class="experience-description">Leading comprehensive visual projects from concept to execution. Managing client relationships, developing brand identities, and delivering premium design assets across multiple disciplines.</p>
+                  <div class="achievement-tags">
+                    <span class="achievement-tag">Branding</span>
+                    <span class="achievement-tag">20+ Clients</span>
+                    <span class="achievement-tag">Award Designs</span>
+                  </div>
+                </article>
+
+                <article class="experience-item reveal">
+                  <div class="timeline-dot">•</div>
+                  <div class="experience-header">
+                    <div>
+                      <p class="experience-period">2023 — 2024</p>
+                      <p class="experience-company">Design Studio Collaboration</p>
+                    </div>
+                  </div>
+                  <h4 class="experience-position">Senior Visual Designer</h4>
+                  <p class="experience-description">Developed brand identities and visual systems for premium clients. Created poster campaigns, packaging designs, and complete brand guidelines with cinematic direction.</p>
+                  <div class="achievement-tags">
+                    <span class="achievement-tag">5+ Brand Identities</span>
+                    <span class="achievement-tag">Poster Campaigns</span>
+                    <span class="achievement-tag">Design Systems</span>
+                  </div>
+                </article>
+
+                <article class="experience-item reveal">
+                  <div class="timeline-dot">•</div>
+                  <div class="experience-header">
+                    <div>
+                      <p class="experience-period">2022 — 2023</p>
+                      <p class="experience-company">Creative Foundation</p>
+                    </div>
+                  </div>
+                  <h4 class="experience-position">Graphic Designer</h4>
+                  <p class="experience-description">Started professional journey with diverse design projects. Built foundation in branding, print design, and digital assets. Collaborated with local businesses and marketing teams.</p>
+                  <div class="achievement-tags">
+                    <span class="achievement-tag">Foundation Built</span>
+                    <span class="achievement-tag">Skills Developed</span>
+                    <span class="achievement-tag">Portfolio Created</span>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="skills-panel reveal" style="display: none;">
+          <div class="infographic-block"></div>
+          <div class="timeline-panel reveal"></div>
         </div>
       </section>
 
@@ -1483,6 +2196,7 @@
     const observerElements = document.querySelectorAll('.reveal');
     const cursorLight = document.getElementById('cursorLight');
 
+    // ============ SCROLL HEADER ============
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
       document.querySelector('header').style.background = scrollY > 20
@@ -1490,13 +2204,26 @@
         : 'rgba(15, 17, 21, 0.75)';
     });
 
+    // ============ REVEAL OBSERVER ============
     const sectionObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          if (entry.target.classList.contains('skill-card')) {
-            const bar = entry.target.querySelector('.skill-progress span');
-            if (bar) bar.style.width = entry.target.style.getPropertyValue('--progress');
+          
+          // Trigger progress bar animation
+          if (entry.target.classList.contains('skill-bar-card')) {
+            const bar = entry.target.querySelector('.progress-bar-fill');
+            if (bar) {
+              bar.style.width = entry.target.style.getPropertyValue('--skill-value');
+            }
+          }
+          
+          // Trigger ring animation
+          if (entry.target.classList.contains('skill-ring-card')) {
+            const fill = entry.target.querySelector('.ring-fill');
+            if (fill) {
+              entry.target.classList.add('visible');
+            }
           }
         }
       });
@@ -1504,6 +2231,7 @@
 
     observerElements.forEach(el => sectionObserver.observe(el));
 
+    // ============ ACTIVE NAV SECTION ============
     const navObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1514,6 +2242,7 @@
 
     sections.forEach(section => navObserver.observe(section));
 
+    // ============ CURSOR GLOW EFFECT ============
     document.addEventListener('mousemove', (event) => {
       cursorLight.style.opacity = '1';
       cursorLight.style.transform = `translate(${event.clientX - 60}px, ${event.clientY - 60}px)`;
@@ -1523,10 +2252,27 @@
       cursorLight.style.opacity = '0';
     });
 
+    // ============ NAV LINK HANDLING ============
     document.querySelectorAll('nav a').forEach(link => {
       link.addEventListener('click', () => {
         document.querySelectorAll('nav a').forEach(item => item.classList.remove('active'));
         link.classList.add('active');
+      });
+    });
+
+    // ============ PROGRESS BAR INITIALIZATION ============
+    // Initialize all progress bars on load for those already visible
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.skill-bar-card').forEach(card => {
+        const skillValue = card.style.getPropertyValue('--skill-value');
+        if (skillValue) {
+          const bar = card.querySelector('.progress-bar-fill');
+          if (bar && card.getBoundingClientRect().top < window.innerHeight) {
+            setTimeout(() => {
+              bar.style.width = skillValue;
+            }, 100);
+          }
+        }
       });
     });
   </script>
