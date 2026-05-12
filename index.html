@@ -1611,6 +1611,304 @@
       }
     }
 
+    /* ============================================
+       FUTURISTIC SKILL DASHBOARD
+       ============================================ */
+
+    .skill-dashboard {
+      position: relative;
+      background: linear-gradient(135deg, rgba(10, 15, 35, 0.95) 0%, rgba(20, 25, 60, 0.88) 50%, rgba(10, 15, 35, 0.95) 100%);
+      border-radius: 40px;
+      padding: 3.5rem;
+      border: 1px solid rgba(100, 255, 218, 0.12);
+      backdrop-filter: blur(24px);
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(100, 255, 218, 0.08);
+      overflow: hidden;
+    }
+
+    .skill-dashboard::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(100, 255, 218, 0.08) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.06) 0%, transparent 50%);
+      pointer-events: none;
+      border-radius: 40px;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .skill-dashboard-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 2.5rem 2rem;
+      border-radius: 32px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(100, 255, 218, 0.15);
+      backdrop-filter: blur(20px);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+      min-height: 380px;
+    }
+
+    .skill-dashboard-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(100, 255, 218, 0.12), transparent 50%);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
+    }
+
+    .skill-dashboard-card::after {
+      content: '';
+      position: absolute;
+      bottom: -40px;
+      right: -40px;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(100, 255, 218, 0.15), transparent);
+      border-radius: 50%;
+      filter: blur(60px);
+      pointer-events: none;
+      transition: all 0.5s ease;
+    }
+
+    .skill-dashboard-card:hover {
+      transform: translateY(-12px) scale(1.02);
+      border-color: rgba(100, 255, 218, 0.3);
+      box-shadow: 0 40px 120px rgba(100, 255, 218, 0.2), inset 0 1px 0 rgba(100, 255, 218, 0.12);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .skill-dashboard-card:hover::before {
+      opacity: 1;
+    }
+
+    .skill-dashboard-card:hover::after {
+      width: 220px;
+      height: 220px;
+      bottom: -60px;
+      right: -60px;
+      background: radial-gradient(circle, rgba(100, 255, 218, 0.25), transparent);
+    }
+
+    .circular-progress {
+      position: relative;
+      width: 160px;
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .circular-progress svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+      filter: drop-shadow(0 0 20px rgba(100, 255, 218, 0.3));
+    }
+
+    .circular-progress circle {
+      fill: none;
+      stroke-width: 12;
+      stroke-linecap: round;
+    }
+
+    .circle-bg {
+      stroke: rgba(100, 255, 218, 0.12);
+      stroke-dasharray: 502;
+      stroke-dashoffset: 0;
+    }
+
+    .circle-fill {
+      stroke: url(#neonGradient);
+      stroke-dasharray: 502;
+      stroke-dashoffset: 502;
+      transition: stroke-dashoffset 1.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+      filter: drop-shadow(0 0 16px rgba(100, 255, 218, 0.5));
+    }
+
+    .skill-dashboard-card.visible .circle-fill {
+      stroke-dashoffset: calc(502 - (502 * var(--skill-percent) / 100));
+    }
+
+    .progress-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 2;
+    }
+
+    .progress-number {
+      margin: 0;
+      font-size: 2.8rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: var(--accent);
+      line-height: 1;
+      text-shadow: 0 0 20px rgba(100, 255, 218, 0.6);
+    }
+
+    .progress-symbol {
+      font-size: 2rem;
+      color: var(--accent);
+      opacity: 0.8;
+    }
+
+    .skill-dashboard-card h3 {
+      position: relative;
+      z-index: 3;
+      margin: 0;
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #ffffff;
+      text-align: center;
+      background: linear-gradient(135deg, #ffffff, rgba(255, 255, 255, 0.8));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .skill-dashboard-card p {
+      position: relative;
+      z-index: 3;
+      margin: 0;
+      font-size: 0.88rem;
+      color: rgba(184, 192, 204, 0.85);
+      text-align: center;
+      line-height: 1.6;
+      letter-spacing: 0.02em;
+      font-weight: 400;
+    }
+
+    .skill-label {
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+    }
+
+    /* Dashboard Title Section */
+    .dashboard-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .dashboard-title h3 {
+      margin: 0 0 1rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .dashboard-title h2 {
+      margin: 0;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      line-height: 1.1;
+    }
+
+    /* Responsive Dashboard */
+    @media (max-width: 1200px) {
+      .dashboard-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.8rem;
+      }
+
+      .skill-dashboard {
+        padding: 3rem;
+      }
+
+      .skill-dashboard-card {
+        min-height: 340px;
+        padding: 2rem;
+      }
+
+      .circular-progress {
+        width: 140px;
+        height: 140px;
+      }
+
+      .progress-number {
+        font-size: 2.4rem;
+      }
+
+      .skill-dashboard-card h3 {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .skill-dashboard {
+        padding: 2rem;
+        border-radius: 28px;
+      }
+
+      .skill-dashboard-card {
+        min-height: auto;
+        padding: 1.8rem;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 1.5rem;
+      }
+
+      .circular-progress {
+        width: 120px;
+        height: 120px;
+        flex-shrink: 0;
+      }
+
+      .progress-text {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+      }
+
+      .progress-number {
+        font-size: 2rem;
+      }
+
+      .skill-dashboard-card div:last-child {
+        text-align: left;
+      }
+
+      .skill-dashboard-card h3 {
+        text-align: left;
+      }
+
+      .skill-dashboard-card p {
+        text-align: left;
+      }
+    }
+
     @media (max-width: 520px) {
       .hero {
         padding-top: 7rem;
@@ -1649,6 +1947,35 @@
       .education-grid,
       .achievement-grid {
         grid-template-columns: 1fr;
+      }
+
+      .dashboard-grid {
+        gap: 1rem;
+      }
+
+      .skill-dashboard {
+        padding: 1.5rem;
+      }
+
+      .skill-dashboard-card {
+        padding: 1.5rem;
+      }
+
+      .circular-progress {
+        width: 110px;
+        height: 110px;
+      }
+
+      .progress-number {
+        font-size: 1.8rem;
+      }
+
+      .skill-dashboard-card h3 {
+        font-size: 1rem;
+      }
+
+      .dashboard-title h2 {
+        font-size: 2rem;
       }
     }
   </style>
@@ -1736,6 +2063,154 @@
           <h2>Expertise crafted through premium visual design and creative expression.</h2>
           <p>Technical proficiency combined with creative vision across branding, poster design, and UI visual systems—backed by proven results and modern tools.</p>
         </div>
+
+        <!-- FUTURISTIC SKILL DASHBOARD -->
+        <article class="skill-dashboard reveal">
+          <div class="dashboard-title">
+            <h3>Core Competencies</h3>
+            <h2>Master Skills Showcase</h2>
+          </div>
+
+          <div class="dashboard-grid">
+            <!-- Card 1: Photoshop -->
+            <div class="skill-dashboard-card reveal" style="--skill-percent: 96;">
+              <div class="circular-progress">
+                <svg viewBox="0 0 160 160">
+                  <defs>
+                    <linearGradient id="neonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color: #64ffda; stop-opacity: 1" />
+                      <stop offset="100%" style="stop-color: #3b82f6; stop-opacity: 1" />
+                    </linearGradient>
+                  </defs>
+                  <circle class="circle-bg" cx="80" cy="80" r="80" />
+                  <circle class="circle-fill" cx="80" cy="80" r="80" />
+                </svg>
+                <div class="progress-text">
+                  <p class="progress-number">96<span class="progress-symbol">%</span></p>
+                </div>
+              </div>
+              <div>
+                <h3>Photoshop</h3>
+                <p class="skill-label">Photo refinement & mood craft</p>
+              </div>
+            </div>
+
+            <!-- Card 2: Illustrator -->
+            <div class="skill-dashboard-card reveal" style="--skill-percent: 92;">
+              <div class="circular-progress">
+                <svg viewBox="0 0 160 160">
+                  <defs>
+                    <linearGradient id="neonGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color: #64ffda; stop-opacity: 1" />
+                      <stop offset="100%" style="stop-color: #3b82f6; stop-opacity: 1" />
+                    </linearGradient>
+                  </defs>
+                  <circle class="circle-bg" cx="80" cy="80" r="80" />
+                  <circle class="circle-fill" cx="80" cy="80" r="80" style="stroke: url(#neonGradient2);" />
+                </svg>
+                <div class="progress-text">
+                  <p class="progress-number">92<span class="progress-symbol">%</span></p>
+                </div>
+              </div>
+              <div>
+                <h3>Illustrator</h3>
+                <p class="skill-label">Vector systems & identity</p>
+              </div>
+            </div>
+
+            <!-- Card 3: Branding -->
+            <div class="skill-dashboard-card reveal" style="--skill-percent: 91;">
+              <div class="circular-progress">
+                <svg viewBox="0 0 160 160">
+                  <defs>
+                    <linearGradient id="neonGradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color: #64ffda; stop-opacity: 1" />
+                      <stop offset="100%" style="stop-color: #3b82f6; stop-opacity: 1" />
+                    </linearGradient>
+                  </defs>
+                  <circle class="circle-bg" cx="80" cy="80" r="80" />
+                  <circle class="circle-fill" cx="80" cy="80" r="80" style="stroke: url(#neonGradient3);" />
+                </svg>
+                <div class="progress-text">
+                  <p class="progress-number">91<span class="progress-symbol">%</span></p>
+                </div>
+              </div>
+              <div>
+                <h3>Branding</h3>
+                <p class="skill-label">Identity systems & luxury tone</p>
+              </div>
+            </div>
+
+            <!-- Card 4: UI Design -->
+            <div class="skill-dashboard-card reveal" style="--skill-percent: 89;">
+              <div class="circular-progress">
+                <svg viewBox="0 0 160 160">
+                  <defs>
+                    <linearGradient id="neonGradient4" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color: #64ffda; stop-opacity: 1" />
+                      <stop offset="100%" style="stop-color: #3b82f6; stop-opacity: 1" />
+                    </linearGradient>
+                  </defs>
+                  <circle class="circle-bg" cx="80" cy="80" r="80" />
+                  <circle class="circle-fill" cx="80" cy="80" r="80" style="stroke: url(#neonGradient4);" />
+                </svg>
+                <div class="progress-text">
+                  <p class="progress-number">89<span class="progress-symbol">%</span></p>
+                </div>
+              </div>
+              <div>
+                <h3>UI Design</h3>
+                <p class="skill-label">Interface craft & motion UI</p>
+              </div>
+            </div>
+
+            <!-- Card 5: Poster Design -->
+            <div class="skill-dashboard-card reveal" style="--skill-percent: 88;">
+              <div class="circular-progress">
+                <svg viewBox="0 0 160 160">
+                  <defs>
+                    <linearGradient id="neonGradient5" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color: #64ffda; stop-opacity: 1" />
+                      <stop offset="100%" style="stop-color: #3b82f6; stop-opacity: 1" />
+                    </linearGradient>
+                  </defs>
+                  <circle class="circle-bg" cx="80" cy="80" r="80" />
+                  <circle class="circle-fill" cx="80" cy="80" r="80" style="stroke: url(#neonGradient5);" />
+                </svg>
+                <div class="progress-text">
+                  <p class="progress-number">88<span class="progress-symbol">%</span></p>
+                </div>
+              </div>
+              <div>
+                <h3>Poster Design</h3>
+                <p class="skill-label">Layered editorial visuals</p>
+              </div>
+            </div>
+
+            <!-- Card 6: Figma -->
+            <div class="skill-dashboard-card reveal" style="--skill-percent: 90;">
+              <div class="circular-progress">
+                <svg viewBox="0 0 160 160">
+                  <defs>
+                    <linearGradient id="neonGradient6" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color: #64ffda; stop-opacity: 1" />
+                      <stop offset="100%" style="stop-color: #3b82f6; stop-opacity: 1" />
+                    </linearGradient>
+                  </defs>
+                  <circle class="circle-bg" cx="80" cy="80" r="80" />
+                  <circle class="circle-fill" cx="80" cy="80" r="80" style="stroke: url(#neonGradient6);" />
+                </svg>
+                <div class="progress-text">
+                  <p class="progress-number">90<span class="progress-symbol">%</span></p>
+                </div>
+              </div>
+              <div>
+                <h3>Figma</h3>
+                <p class="skill-label">Prototyping & collaboration</p>
+              </div>
+            </div>
+          </div>
+        </article>
 
         <div class="skills-container">
           
@@ -2225,6 +2700,11 @@
               entry.target.classList.add('visible');
             }
           }
+
+          // Trigger dashboard card animation
+          if (entry.target.classList.contains('skill-dashboard-card')) {
+            entry.target.classList.add('visible');
+          }
         }
       });
     }, { threshold: 0.18 });
@@ -2272,6 +2752,15 @@
               bar.style.width = skillValue;
             }, 100);
           }
+        }
+      });
+
+      // Initialize dashboard cards
+      document.querySelectorAll('.skill-dashboard-card').forEach((card, index) => {
+        if (card.getBoundingClientRect().top < window.innerHeight) {
+          setTimeout(() => {
+            card.classList.add('visible');
+          }, index * 80);
         }
       });
     });
