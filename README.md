@@ -1,6 +1,5 @@
 #I
 
-
 # - Xử dụng công cụ AI chat gpt
 
 #II
