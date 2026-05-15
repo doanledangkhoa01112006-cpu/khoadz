@@ -1,3 +1,4 @@
+    LINK VIDEO : https://drive.google.com/file/d/1UbTgVO4uTvP2iWQSBlgCTeirJXWjF_Jq/view?usp=drive_link
 #I
 
 # - Xử dụng công cụ AI chat gpt
